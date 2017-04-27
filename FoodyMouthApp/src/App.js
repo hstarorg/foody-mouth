@@ -145,7 +145,8 @@ MainScreenNavigator.navigationOptions = {
 const FoodyMouthApp = StackNavigator({
   Home: { screen: MainScreenNavigator, headerMode: 'card' },
   Chat: { screen: ChatScreen, headerMode: 'card' },
-
 });
 
-AppRegistry.registerComponent('FoodyMouthApp', () => MyApp);
+import { AppNavigator } from './App.Navigator';
+
+AppRegistry.registerComponent('FoodyMouthApp', () => AppNavigator);
