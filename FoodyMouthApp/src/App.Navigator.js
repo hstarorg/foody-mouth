@@ -1,4 +1,6 @@
-import { TabNavigator } from 'react-navigation';
+import React, { PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { addNavigationHelpers, TabNavigator } from 'react-navigation';
 
 import { HomeStackNavigator } from './modules/home';
 import { MeetStackNavigator } from './modules/meet';
@@ -6,7 +8,7 @@ import { RestaurantStackNavigator } from './modules/restaurant';
 import { ChatStackNavigator } from './modules/chat';
 import { UserCenterStackNavigator } from './modules/usercenter';
 
-const navigators = {
+export const navigators = {
   Home: {
     screen: HomeStackNavigator, headerMode: 'card'
   },
@@ -38,4 +40,19 @@ const navigatorOpt = {
   tabBarPosition: 'bottom'
 };
 
-export const AppNavigator = TabNavigator(navigators, navigatorOpt);
+export const AppTabNavigator = TabNavigator(navigators, navigatorOpt);
+
+const AppWithNavigationState = ({ dispatch, nav }) => (
+  <AppTabNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
+);
+
+AppWithNavigationState.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  nav: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  nav: state.nav,
+});
+
+export const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);

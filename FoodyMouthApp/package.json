@@ -11,6 +11,8 @@
     "react-native": "0.43.4",
     "react-native-i18n": "^1.0.0",
     "react-navigation": "git+https://github.com/react-community/react-navigation.git#7165efc",
+    "react-redux": "^5.0.4",
+    "redux": "^3.6.0",
     "rn-splash-screen": "^4.0.0"
   },
   "devDependencies": {
