@@ -149,4 +149,8 @@ const FoodyMouthApp = StackNavigator({
 
 import { AppNavigator } from './App.Navigator';
 
+import SplashScreen from "rn-splash-screen";
+// Hide the active splash screen
+SplashScreen.hide();
+
 AppRegistry.registerComponent('FoodyMouthApp', () => AppNavigator);
