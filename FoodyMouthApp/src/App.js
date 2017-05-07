@@ -15,6 +15,4 @@ I18n.translations = {
 I18n.locales['en-us'] = 'zh-cn'; // 设置回退，如果en-us中找不到，则去zh-cn中找
 I18n.locale = 'en-us'; // 设定当前语言
 
-alert(I18n.t('hello')); // 测试多语言
-
 AppRegistry.registerComponent('FoodyMouthApp', () => AppNavigator);

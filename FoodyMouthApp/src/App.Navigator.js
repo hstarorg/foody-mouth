@@ -1,63 +1,39 @@
-import React, { Component } from 'react';
-import { Button } from 'react-native';
-import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
+import { TabNavigator } from 'react-navigation';
 
-class MyHomeScreen extends Component {
-  static navigationOptions = {
-    tabBarLabel: '首页',
-    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-    tabBarIcon: ({ tintColor }) => (null),
-  };
-
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.navigate('Notifications')}
-        title="Go to notifications"
-      />
-    );
-  }
-}
-
-class MyNotificationsScreen extends Component {
-  static navigationOptions = {
-    tabBarLabel: '搜索',
-    tabBarIcon: ({ tintColor }) => (
-      null
-    ),
-  };
-
-  render() {
-    return (
-      <Button
-        onPress={() => this.props.navigation.goBack()}
-        title="Go back home"
-      />
-    );
-  }
-}
+import { HomeStackNavigator } from './modules/home';
+import { MeetStackNavigator } from './modules/meet';
+import { RestaurantStackNavigator } from './modules/restaurant';
+import { ChatStackNavigator } from './modules/chat';
+import { UserCenterStackNavigator } from './modules/usercenter';
 
 const navigators = {
+  Home: {
+    screen: HomeStackNavigator, headerMode: 'card'
+  },
   Meet: {
-    screen: MyHomeScreen,
-  },
-  Food: {
-    screen: MyHomeScreen,
-  },
-  Search: {
-    screen: MyNotificationsScreen,
+    screen: MeetStackNavigator, headerMode: 'card'
   },
   Restaurant: {
-    screen: MyHomeScreen,
+    screen: RestaurantStackNavigator, headerMode: 'card'
+  },
+  Chat: {
+    screen: ChatStackNavigator, headerMode: 'card'
   },
   UserCenter: {
-    screen: MyHomeScreen
+    screen: UserCenterStackNavigator, headerMode: 'card'
   }
 };
 
 const navigatorOpt = {
   tabBarOptions: {
-    activeTintColor: '#e91e63',
+    activeTintColor: '#e51c23',
+    labelStyle: {
+      fontSize: 16,
+      color: '#fff'
+    },
+    style: {
+      backgroundColor: '#000'
+    }
   },
   tabBarPosition: 'bottom'
 };
