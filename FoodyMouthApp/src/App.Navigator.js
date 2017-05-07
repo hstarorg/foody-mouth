@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Button } from 'react-native';
 import { StackNavigator, TabNavigator, DrawerNavigator } from 'react-navigation';
 
-
-
 class MyHomeScreen extends Component {
   static navigationOptions = {
     tabBarLabel: '首页',

@@ -9,6 +9,7 @@
   "dependencies": {
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.4",
+    "react-native-i18n": "^1.0.0",
     "react-navigation": "git+https://github.com/react-community/react-navigation.git#7165efc",
     "rn-splash-screen": "^4.0.0"
   },
