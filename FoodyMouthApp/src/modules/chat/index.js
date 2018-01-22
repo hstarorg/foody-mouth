@@ -1,5 +1,3 @@
 import { ChatStackNavigator } from './Chat.Navigator';
 
-export {
-  ChatStackNavigator
-};
+export { ChatStackNavigator };

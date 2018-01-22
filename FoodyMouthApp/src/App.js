@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { AppRegistry } from 'react-native';
 import SplashScreen from 'rn-splash-screen';
 
 import { AppNavigator } from './App.Navigator';
