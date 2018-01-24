@@ -1,33 +1,31 @@
 import React, { Component } from 'react';
-import { AppRegistry } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import SplashScreen from 'rn-splash-screen';
 
-import { AppNavigator } from './App.Navigator';
-import { I18n } from './core/services';
+import AppNavigator from './App.Navigator';
+import { i18n } from './core/services';
+import { en, zh } from './i18n';
 import { AppReducer } from './reducers';
 
-// Hide the active splash screen
-SplashScreen.hide();
-
 // I18n.fallbacks = true;
-I18n.translations = {
-  'en-us': { hello: 'Hello' },
-  'zh-cn': { hello: '欢迎' }
-};
-I18n.locales['en-us'] = 'zh-cn'; // 设置回退，如果en-us中找不到，则去zh-cn中找
-I18n.locale = 'en-us'; // 设定当前语言
+i18n.translations = { 'en-us': en, 'zh-cn': zh };
+i18n.locales['en-us'] = 'zh-cn'; // 设置回退，如果en-us中找不到，则去zh-cn中找
+i18n.locale = 'en-us'; // 设定当前语言
 
-class FoodyMouthApp extends Component {
-  store = createStore(AppReducer);
+const store = createStore(AppReducer);
+
+// Hide splash after 2s
+setTimeout(() => {
+  SplashScreen.hide();
+}, 1500);
+
+export class App extends Component {
   render() {
     return (
-      <Provider store={this.store}>
+      <Provider store={store}>
         <AppNavigator />
       </Provider>
     );
   }
 }
-
-AppRegistry.registerComponent('FoodyMouthApp', () => FoodyMouthApp);

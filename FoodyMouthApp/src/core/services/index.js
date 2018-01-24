@@ -1,5 +1,3 @@
-import I18n from 'react-native-i18n';
+import i18n from 'react-native-i18n';
 
-export {
-  I18n
-};
+export { i18n };

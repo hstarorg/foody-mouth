@@ -1,28 +1,39 @@
-import React, { PropTypes } from 'react';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { TabNavigator, addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
-import { addNavigationHelpers, TabNavigator } from 'react-navigation';
 
+import { ChatStackNavigator } from './modules/chat';
 import { HomeStackNavigator } from './modules/home';
 import { MeetStackNavigator } from './modules/meet';
 import { RestaurantStackNavigator } from './modules/restaurant';
-import { ChatStackNavigator } from './modules/chat';
 import { UserCenterStackNavigator } from './modules/usercenter';
 
 export const navigators = {
   Home: {
-    screen: HomeStackNavigator, headerMode: 'card'
+    // 首页
+    screen: HomeStackNavigator,
+    headerMode: 'card'
   },
   Meet: {
-    screen: MeetStackNavigator, headerMode: 'card'
+    // 饭局
+    screen: MeetStackNavigator,
+    headerMode: 'card'
   },
   Restaurant: {
-    screen: RestaurantStackNavigator, headerMode: 'card'
+    // 发现
+    screen: RestaurantStackNavigator,
+    headerMode: 'card'
   },
   Chat: {
-    screen: ChatStackNavigator, headerMode: 'card'
+    // 聊天
+    screen: ChatStackNavigator,
+    headerMode: 'card'
   },
   UserCenter: {
-    screen: UserCenterStackNavigator, headerMode: 'card'
+    // 我的
+    screen: UserCenterStackNavigator,
+    headerMode: 'card'
   }
 };
 
@@ -42,17 +53,25 @@ const navigatorOpt = {
 
 export const AppTabNavigator = TabNavigator(navigators, navigatorOpt);
 
-const AppWithNavigationState = ({ dispatch, nav }) => (
+const AppWithNavigation = ({ dispatch, nav }) => (
   <AppTabNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
 );
 
-AppWithNavigationState.propTypes = {
+AppWithNavigation.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  nav: PropTypes.object.isRequired,
+  nav: PropTypes.object.isRequired
 };
 
-const mapStateToProps = state => ({
-  nav: state.nav,
-});
+function mapStateToProps(state) {
+  return {
+    nav: state.nav
+  };
+}
 
-export const AppNavigator = connect(mapStateToProps)(AppWithNavigationState);
+function mapDispatchToProps(dispatch) {
+  return {
+    dispatch
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppWithNavigation);
