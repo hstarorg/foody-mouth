@@ -7,13 +7,19 @@
       "jsx": true
     }
   },
-  "plugins": ["react"],
+  "env": {
+    "es6": true,
+    "react-native/react-native": true
+  },
+  "plugins": ["react", "react-native"],
   "rules": {
     "no-unused-vars": "warn",
     "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error"
-  },
-  "globals": {
-    "setTimeout": true
+    "react/jsx-uses-vars": "error",
+    "react-native/no-unused-styles": 2,
+    "react-native/split-platform-components": 2,
+    "react-native/no-inline-styles": 2,
+    "react-native/no-color-literals": 2,
+    "no-console": "off"
   }
 }
