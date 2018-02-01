@@ -30,27 +30,22 @@ export class App extends Component {
     setTimeout(() => {
       SplashScreen.hide();
     }, 1500);
+    this._loadJpush();
+  }
+
+  async _loadJpush() {
     const registrationId = await jPushHelper.getRegistrationID();
     console.log('registrationId=', registrationId);
-    await jPushHelper.initJPush();
-    jPushHelper.notifyJSDidLoadAndroid(async abc => {
-      jPushHelper.addReceiveNotificationListener(msgObj => {
-        const { id } = msgObj;
-        // jPushHelper.clearNotificationById(id);
-        console.log('页面内收到通知-app运行时才能收到消息', msgObj);
-      });
-      jPushHelper.addReceiveOpenNotificationListener(msgObj => {
-        console.log('open消息-点击通知栏消息时触发', msgObj);
-      });
-
-      jPushHelper.addOpenNotificationLaunchAppListener(msgObj => {
-        console.log('app launch-应用启动消息', msgObj);
-      });
-      jPushHelper.addReceiveExtrasListener(msgObj => {
-        console.log('app launch-应用启动消息222', msgObj);
-      });
+    await jPushHelper.notifyJSDidLoadAndroid(() => {});
+    jPushHelper.addReceiveNotificationListener(msgObj => {
+      const { id } = msgObj;
+      // jPushHelper.clearNotificationById(id);
+      console.log('页面内收到通知-app运行时才能收到消息', msgObj);
+    });
+    jPushHelper.addReceiveOpenNotificationListener(msgObj => {
+      console.log('open消息-点击通知栏消息时触发', msgObj);
     });
   }
 
-  async componentWillUnmount() {}
+  componentWillUnmount() {}
 }
