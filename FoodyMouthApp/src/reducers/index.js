@@ -1,6 +1,6 @@
-import { combineReducers } from 'redux';
 import { NavigationActions } from 'react-navigation';
-import { AppTabNavigator } from '../App.Navigator';
+import { combineReducers } from 'redux';
+import { AppTabNavigator } from '../AppNavigator';
 
 const firstAction = AppTabNavigator.router.getActionForPathAndParams('Home');
 const tempNavState = AppTabNavigator.router.getStateForAction(firstAction);

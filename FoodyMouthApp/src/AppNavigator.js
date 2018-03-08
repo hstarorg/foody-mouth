@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { TabNavigator, addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
-
 import { ChatStackNavigator } from './modules/chat';
 import { HomeStackNavigator } from './modules/home';
 import { MeetStackNavigator } from './modules/meet';

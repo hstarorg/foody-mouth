@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-
-import AppNavigator from './App.Navigator';
+import AppNavigator from './AppNavigator';
 import { jPushHelper } from './core/common';
 import { i18n } from './core/services';
 import { en, zh } from './i18n';
