@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import codePush from 'react-native-code-push';
 import SplashScreen from 'react-native-splash-screen';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -15,7 +16,7 @@ i18n.locale = 'en-us'; // 设定当前语言
 
 const store = createStore(AppReducer);
 
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <Provider store={store}>
@@ -48,3 +49,5 @@ export class App extends Component {
 
   componentWillUnmount() {}
 }
+
+export default codePush(App);

@@ -3,6 +3,7 @@ package com.foodymouthapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.microsoft.codepush.react.CodePush;
 import cn.jpush.reactnativejpush.JPushPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
@@ -22,6 +23,12 @@ public class MainApplication extends Application implements ReactApplication {
   private boolean SHUTDOWN_LOG = false;
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+    @Override
+    protected String getJSBundleFile() {
+      return CodePush.getJSBundleFile();
+    }
+
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -30,9 +37,9 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(new MainReactPackage(),
-            new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG),
-            new RNI18nPackage(),
-            new SplashScreenReactPackage());
+          new CodePush("xuCWzonS29PP2ERbFaKDoS03poXOtD9LKKVna", getApplicationContext(), BuildConfig.DEBUG,
+              "http://localhost:3000"),
+          new JPushPackage(SHUTDOWN_TOAST, SHUTDOWN_LOG), new RNI18nPackage(), new SplashScreenReactPackage());
     }
 
     @Override
