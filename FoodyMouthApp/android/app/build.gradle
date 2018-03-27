@@ -108,6 +108,7 @@ android {
             JPUSH_APPKEY: "d6b997967441ef429fc5059e", //在此替换你的APPKey
             APP_CHANNEL: "developer-default"    //应用渠道号
         ]
+        // 本地开发时，为了让打包的app在模拟器上运行，请追加 "x86"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
